@@ -113,9 +113,9 @@ int easySocket_send_message(int dest_id, char *message){
 }
 
 /**
- * Set easySocket_read to non-blocking for a given id
+ * Set socket to non-blocking for a given id
  */
-void easySocket_set_non_block_read(int sock_id){
+void easySocket_set_non_block(int sock_id){
     int flags = fcntl(sock_id, F_GETFL, 0);
     fcntl(sock_id, F_SETFL, flags | O_NONBLOCK);
 }
