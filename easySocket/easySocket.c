@@ -126,3 +126,43 @@ void easySocket_set_non_block_read(int sock_id){
 size_t easySocket_read(int sock_id, void *message_buffer, size_t count){
     return read(sock_id, message_buffer, count);
 }
+
+/**
+ * Read an entire message buffer
+ * 
+ * Read must be set to non-blocking
+ * 
+ * Return the complete message
+*/
+char * easySocket_read_all(int sock_id){
+    char message_buffer[easySocket_READ_ALL_MSG_BUFF_SIZE];
+
+    /* Where the complete message is going to be stored */
+    char * final_msg = NULL;
+
+    /* While there is something to read in the buffer */
+    while(read(sock_id, message_buffer, easySocket_READ_ALL_MSG_BUFF_SIZE)){
+        final_msg = (char *)realloc(final_msg, sizeof(final_msg) + (strlen(message_buffer) + 1) * sizeof(char));
+
+        if(final_msg == NULL){
+            fprintf(stderr, "(easySocket_read_all) Error while reallocating final_msg size.\n");
+        }
+
+        strcat(final_msg, message_buffer);
+    }
+
+    return final_msg;
+}
+
+/**
+ * Empty a socket message buffer
+ * 
+ * Read must be set to non-blocking
+*/
+void easySocket_empty_msg(int sock_id){
+    char message_buffer[easySocket_READ_ALL_MSG_BUFF_SIZE];
+
+    while(read(sock_id, message_buffer, easySocket_READ_ALL_MSG_BUFF_SIZE)){
+        ;
+    }
+}

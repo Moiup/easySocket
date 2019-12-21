@@ -25,6 +25,7 @@
 #define easySocket_NO_VAL -1
 
 #define easySocket_SUCCESS 1
+#define easySocket_READ_ALL_MSG_BUFF_SIZE 50
 
 int easySocket_accept_size_addr;
 struct sockaddr_in easySocket_accept_client_address;
@@ -70,5 +71,21 @@ void easySocket_set_non_block_read(int sock_id);
  * Read a message in a buffer, for a given size (it is just a mask of the original read function)
  */
 size_t easySocket_read(int sock_id, void *message_buffer, size_t count);
+
+/**
+ * Read an entire message buffer
+ * 
+ * Read must be set to non-blocking
+ * 
+ * Return the complete message
+*/
+char * easySocket_read_all(int sock_id);
+
+/**
+ * Empty a socket message buffer
+ * 
+ * Read must be set to non-blocking
+*/
+void easySocket_empty_msg(int sock_id);
 
 #endif
