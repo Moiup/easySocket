@@ -25,6 +25,7 @@
 #define easySocket_NO_VAL -1
 
 #define easySocket_SUCCESS 1
+#define easySocket_READ_ALL_MSG_BUFF_SIZE 50
 
 int easySocket_accept_size_addr;
 struct sockaddr_in easySocket_accept_client_address;
@@ -62,13 +63,14 @@ int easySocket_client_connect(int sock_id, char *address, int port);
 int easySocket_send_message(int dest_id, char *message);
 
 /**
- * Set easySocket_read to non-blocking for a given id
+ * Set a socket to non-blocking
  */
-void easySocket_set_non_block_read(int sock_id);
+void easySocket_set_non_block(int sock_id);
 
 /**
  * Read a message in a buffer, for a given size (it is just a mask of the original read function)
  */
 size_t easySocket_read(int sock_id, void *message_buffer, size_t count);
+
 
 #endif

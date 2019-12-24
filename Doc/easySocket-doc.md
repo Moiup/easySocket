@@ -34,9 +34,9 @@ int easySocket_send_message(int, char)
 Send a message. [More here.](./functions/easySocket_send_message.md)
 
 ```C
-void easySocket_set_non_block_read(int)
+void easySocket_set_non_block(int)
 ```
-Set the reading message to non-blocking. [More here.](./functions/easySocket_set_non_block_read.md)
+Set a socket to non-blocking. [More here.](./functions/easySocket_set_non_block.md)
 
 ```C
 size_t easySocket_read(int, void, size_t)
