@@ -25,4 +25,4 @@ The port to create the server.
 The maximum number of connection possible.
 
 ## **Result**
-The server socket id.
+The server socket id if successful, easySocket_NO_VAL otherwise.

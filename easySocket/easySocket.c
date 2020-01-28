@@ -16,31 +16,31 @@ const int easySocket_size_addr = sizeof(struct sockaddr_in);
 
 
 /**
- * Return the server socket id
+ * Return the server socket id if succeed, easySocket_NO_VAL otherwise
  */
 int easySocket_server_creation(char *address, int port, int max_connection){
     int sock_id;
     struct sockaddr_in socket_address;
     
-    errno = 0;
+    /*errno = 0;*/
     /* Creating the socket */
     sock_id = socket(AF_INET, SOCK_STREAM, 0);
     if(sock_id == easySocket_NO_VAL){
-        exit(EXIT_FAILURE);
+        return easySocket_NO_VAL;
     }
 
     socket_address.sin_family = AF_INET;
     socket_address.sin_addr.s_addr = inet_addr(address);
     socket_address.sin_port = htons(port);
-    errno = 0;
+    /*errno = 0;*/
     /* We bind the sock_id with the socket_address */
     if(bind(sock_id, (struct sockaddr*)&socket_address, easySocket_size_addr) == easySocket_NO_VAL){
-        exit(EXIT_FAILURE);
+        return easySocket_NO_VAL;
     }
 
     /* We put the system in listening mode, so that we can listen to client connections */
     if(listen(sock_id, max_connection) == easySocket_NO_VAL){
-        exit(EXIT_FAILURE);
+        return easySocket_NO_VAL;
     }
     return sock_id;
 }

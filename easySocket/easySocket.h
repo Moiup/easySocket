@@ -31,7 +31,7 @@ int easySocket_accept_size_addr;
 struct sockaddr_in easySocket_accept_client_address;
 
 /**
- * Return the server socket id
+ * Return the server socket id if succeed, easySocket_NO_VAL otherwise
  */
 int easySocket_server_creation(char *address, int port, int max_connection);
 

@@ -26,6 +26,7 @@ int main(){
                                         SERVER_PORT,
                                         MAX_CONNECTION
                                     );
+                                    
     if(sock_id == easySocket_NO_VAL){
         fprintf(stderr, "Error creating the server socket.\n");
         exit(EXIT_FAILURE);
