@@ -108,8 +108,8 @@ int easySocket_client_connect(int sock_id, char *address, int port){
 /**
  * Send a message to a client (client_id)
  */
-int easySocket_send_message(int dest_id, void *message){
-    return send(dest_id, message, strlen(message) + 1, 0);
+int easySocket_send_message(int dest_id, void *message, size_t msg_len){
+    return send(dest_id, message, msg_len, 0);
 }
 
 /**

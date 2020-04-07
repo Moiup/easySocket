@@ -45,7 +45,7 @@ int main(){
     }
 
     /* Sending "Hello Word!" */
-    easySocket_send_message(client_id, "Hello Word!");
+    easySocket_send_message(client_id, "Hello Word!", strlen("Hello Word!"));
 
     fprintf(stdout, "Message sent, bye bye.\n");
 

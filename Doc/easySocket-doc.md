@@ -29,7 +29,7 @@ Connect the client to the server. [More here.](./functions/easySocket_client_con
 ## **Message**
 
 ```C
-int easySocket_send_message(int, char)
+int easySocket_send_message(int, char, size_t)
 ```
 Send a message. [More here.](./functions/easySocket_send_message.md)
 
